@@ -28,43 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.seferler = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.seferBaslangicTarhi = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.SuspendLayout();
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
+			this.listView1 = new System.Windows.Forms.ListView();
+			this.seferler = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.seferBaslangicTarhi = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.SuspendLayout();
+			// 
+			// listView1
+			// 
+			this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.seferler,
             this.seferBaslangicTarhi});
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(31, 11);
-            this.listView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(662, 354);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-           
-            // 
-            // seferler
-            // 
-            this.seferler.Text = "Seferler";
-            // 
-            // seferBaslangicTarhi
-            // 
-            this.seferBaslangicTarhi.Text = "Sefer Başlangıç Tarihi";
-            // 
-            // Form3
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 398);
-            this.Controls.Add(this.listView1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "Form3";
-            this.Text = "Form3";
-            this.ResumeLayout(false);
+			this.listView1.HideSelection = false;
+			this.listView1.Location = new System.Drawing.Point(31, 11);
+			this.listView1.Margin = new System.Windows.Forms.Padding(2);
+			this.listView1.Name = "listView1";
+			this.listView1.Size = new System.Drawing.Size(662, 354);
+			this.listView1.TabIndex = 0;
+			this.listView1.UseCompatibleStateImageBehavior = false;
+			// 
+			// seferler
+			// 
+			this.seferler.Text = "Seferler";
+			// 
+			// seferBaslangicTarhi
+			// 
+			this.seferBaslangicTarhi.Text = "Sefer Başlangıç Tarihi";
+			// 
+			// Form3
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+			this.ClientSize = new System.Drawing.Size(734, 393);
+			this.Controls.Add(this.listView1);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Margin = new System.Windows.Forms.Padding(2);
+			this.Name = "Form3";
+			this.Text = "Seyir Defteri";
+			this.ResumeLayout(false);
 
         }
 

@@ -124,10 +124,12 @@
             this.nmdTonaj.Location = new System.Drawing.Point(198, 109);
             this.nmdTonaj.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nmdTonaj.Maximum = new decimal(new int[] {
+
             99999999,
             0,
             0,
             0});
+
             this.nmdTonaj.Name = "nmdTonaj";
             this.nmdTonaj.Size = new System.Drawing.Size(276, 23);
             this.nmdTonaj.TabIndex = 7;
@@ -172,6 +174,7 @@
             // lstVGonderim
             // 
             this.lstVGonderim.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader9,
@@ -179,6 +182,7 @@
             this.columnHeader11,
             this.columnHeader12,
             this.columnHeader13});
+
             this.lstVGonderim.GridLines = true;
             this.lstVGonderim.HideSelection = false;
             this.lstVGonderim.Location = new System.Drawing.Point(42, 282);
@@ -303,6 +307,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbGemiler)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
 
         }
 
