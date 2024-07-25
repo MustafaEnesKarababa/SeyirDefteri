@@ -103,5 +103,22 @@
       <Name>SeyirDefteri.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="GemiFotograflari\1.jpg" />
+    <Content Include="GemiFotograflari\10.jpg" />
+    <Content Include="GemiFotograflari\11.jpg" />
+    <Content Include="GemiFotograflari\12.png" />
+    <Content Include="GemiFotograflari\13.jpg" />
+    <Content Include="GemiFotograflari\14.jpeg" />
+    <Content Include="GemiFotograflari\15.jpg" />
+    <Content Include="GemiFotograflari\2.jpg" />
+    <Content Include="GemiFotograflari\3.jpg" />
+    <Content Include="GemiFotograflari\4.jpg" />
+    <Content Include="GemiFotograflari\5.jpg" />
+    <Content Include="GemiFotograflari\6.png" />
+    <Content Include="GemiFotograflari\7.jpg" />
+    <Content Include="GemiFotograflari\8.jpg" />
+    <Content Include="GemiFotograflari\9.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

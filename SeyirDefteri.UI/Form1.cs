@@ -18,7 +18,19 @@ namespace SeyirDefteri.UI
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+		private void InitializeDateTimePickers()
+		{
+			// DateTimePicker kontrolünün formatını ayarlama
+			dtpLimanCikisTarihi.Format = DateTimePickerFormat.Custom;
+			dtpLimanCikisTarihi.CustomFormat = "dd/MM/yyyy HH:mm"; // Gün/Ay/Yıl Saat:Dakika formatı
+			dtpLimanCikisTarihi.ShowUpDown = true;
+
+			dtpLimanVarisTarihi.Format = DateTimePickerFormat.Custom;
+			dtpLimanVarisTarihi.CustomFormat = "dd/MM/yyyy HH:mm"; // Gün/Ay/Yıl Saat:Dakika formatı
+			dtpLimanVarisTarihi.ShowUpDown = true;
+		}
+
+		private void label2_Click(object sender, EventArgs e)
         {
 
         }
@@ -27,7 +39,9 @@ namespace SeyirDefteri.UI
         {
             GemileriOlustur();
             LimanOlustur();
-        }
+            this.Text = "Sefer";
+			
+		}
 
         private void LimanOlustur()
         {
@@ -80,21 +94,21 @@ namespace SeyirDefteri.UI
         {
             List<Gemi> gemiler = new List<Gemi>
     {
-        new Gemi { GemiId = 1, GemiAdi = "Titanic", Tonaji = 46000m },
-        new Gemi { GemiId = 2, GemiAdi = "Queen Mary 2", Tonaji = 148528m },
-        new Gemi { GemiId = 3, GemiAdi = "Oasis of the Seas", Tonaji = 226838m },
-        new Gemi { GemiId = 4, GemiAdi = "Harmony of the Seas", Tonaji = 226963m },
-        new Gemi { GemiId = 5, GemiAdi = "Symphony of the Seas", Tonaji = 228081m },
-        new Gemi { GemiId = 6, GemiAdi = "MSC Meraviglia", Tonaji = 171598m },
-        new Gemi { GemiId = 7, GemiAdi = "Norwegian Escape", Tonaji = 165300m },
-        new Gemi { GemiId = 8, GemiAdi = "Costa Smeralda", Tonaji = 185010m },
-        new Gemi { GemiId = 9, GemiAdi = "AIDAnova", Tonaji = 183900m },
-        new Gemi { GemiId = 10, GemiAdi = "Mardi Gras", Tonaji = 180000m },
-        new Gemi { GemiId = 11, GemiAdi = "Regal Princess", Tonaji = 142714m },
-        new Gemi { GemiId = 12, GemiAdi = "Majestic Princess", Tonaji = 143700m },
-        new Gemi { GemiId = 13, GemiAdi = "Celebrity Edge", Tonaji = 130818m },
-        new Gemi { GemiId = 14, GemiAdi = "MSC Seaview", Tonaji = 154000m },
-        new Gemi { GemiId = 15, GemiAdi = "Carnival Vista", Tonaji = 133500m }
+        new Gemi { GemiId = 1, GemiAdi = "Titanic", Tonaji = 46000m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\1.jpg" },
+        new Gemi { GemiId = 2, GemiAdi = "Queen Mary 2", Tonaji = 148528m , FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\2.jpg" },
+        new Gemi { GemiId = 3, GemiAdi = "Oasis of the Seas", Tonaji = 226838m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\3.jpg" },
+        new Gemi { GemiId = 4, GemiAdi = "Harmony of the Seas", Tonaji = 226963m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\4.jpg" },
+        new Gemi { GemiId = 5, GemiAdi = "Symphony of the Seas", Tonaji = 228081m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\5.jpg" },
+        new Gemi { GemiId = 6, GemiAdi = "MSC Meraviglia", Tonaji = 171598m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\6.png" },
+        new Gemi { GemiId = 7, GemiAdi = "Norwegian Escape", Tonaji = 165300m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\7.jpg" },
+        new Gemi { GemiId = 8, GemiAdi = "Costa Smeralda", Tonaji = 185010m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\8.jpg" },
+        new Gemi { GemiId = 9, GemiAdi = "AIDAnova", Tonaji = 183900m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\9.jpg" },
+        new Gemi { GemiId = 10, GemiAdi = "Mardi Gras", Tonaji = 180000m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\10.jpg" },
+        new Gemi { GemiId = 11, GemiAdi = "Regal Princess", Tonaji = 142714m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\11.jpg" },
+        new Gemi { GemiId = 12, GemiAdi = "Majestic Princess", Tonaji = 143700m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\12.jpg" },
+        new Gemi { GemiId = 13, GemiAdi = "Celebrity Edge", Tonaji = 130818m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\13.jpg" },
+        new Gemi { GemiId = 14, GemiAdi = "MSC Seaview", Tonaji = 154000m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\14.jpg" },
+        new Gemi { GemiId = 15, GemiAdi = "Carnival Vista", Tonaji = 133500m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\15.jpg" }
     };
 
             foreach (var gemi in gemiler)
@@ -110,6 +124,11 @@ namespace SeyirDefteri.UI
             if ((dtpLimanCikisTarihi.Value > dtpLimanVarisTarihi.Value))
             {
                 MessageBox.Show("Varış Tarihi Çıkış Küçük olamaz");
+                return;
+            }
+            if (dtpLimanCikisTarihi.Value < DateTime.Now && dtpLimanVarisTarihi.Value < DateTime.Now)
+			{
+                MessageBox.Show("Sefer girişleri günümüz ve sonraki tarihlerde yapılabilir, bu sebeple geçmiş tarihlerde giriş yapamazsınız");
                 return;
             }
             if (cmbGemi.SelectedItem == null)
@@ -131,16 +150,17 @@ namespace SeyirDefteri.UI
             SeyirKaydi seyirDefteri = new SeyirKaydi();
 
             seyirDefteri.LimandanCikisTarihi = dtpLimanCikisTarihi.Value;
-            seyirDefteri.LimanaVarisTarihi = dtpLimanVarisTarihi.Value;
-            seyirDefteri.CikisLimani = cmnCikisLimani.SelectedItem.ToString();
+			seyirDefteri.CikisLimani = cmnCikisLimani.SelectedItem.ToString();
+			seyirDefteri.LimanaVarisTarihi = dtpLimanVarisTarihi.Value;            
             seyirDefteri.UgrayacagiLiman = cmnUgradigiLimani.SelectedItem.ToString();
             seyirDefteri.VarisLimani = cmnVarisLimani.SelectedItem.ToString();
             seyirDefteri.Gemi = (Gemi)cmbGemi.SelectedItem;
 
             ListViewItem lstSyeriDefteri = new ListViewItem();
             lstSyeriDefteri.Text = (++id).ToString();
-            lstSyeriDefteri.SubItems.Add(seyirDefteri.LimanaVarisTarihi.ToString());
-            lstSyeriDefteri.SubItems.Add(seyirDefteri.LimandanCikisTarihi.ToString());
+			lstSyeriDefteri.SubItems.Add(seyirDefteri.LimandanCikisTarihi.ToString());
+			lstSyeriDefteri.SubItems.Add(seyirDefteri.LimanaVarisTarihi.ToString());
+            
 
             lstSyeriDefteri.SubItems.Add(seyirDefteri.CikisLimani.ToString());
             lstSyeriDefteri.SubItems.Add(seyirDefteri.UgrayacagiLiman.ToString());
@@ -182,5 +202,7 @@ namespace SeyirDefteri.UI
                 MessageBox.Show("Lütfen Seyirlerinizi Listeye Ekleyiniz");
             }
         }
-    }
+
+		
+	}
 }

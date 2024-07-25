@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnGemiAdi = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnCikisTarihi = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -191,6 +192,7 @@
             this.Text = "Rapor Sayfası";
             this.ResumeLayout(false);
             this.PerformLayout();
+
 
         }
 
