@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,98 +14,112 @@ namespace SeyirDefteri.UI
 {
     public partial class Form3 : Form
     {
-        private List<Gonderim> gonderims;
+        private List<Gonderim> gonderimler;
 
-        public Form3()
+        public Form3(List<Gonderim> gonderimler)
         {
             InitializeComponent();
+            this.gonderimler = gonderimler;
+            ComboxGemileriDoldur();
+            ComboboxFirmalariDoldur();
+            ListViewDoldur(gonderimler);
         }
 
-        public Form3(List<Gonderim> gonderims) : this()
+        private void cbGemiSec_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.gonderims = gonderims;
-            ListViewListele();
+            ListViewFiltrele();
         }
-        decimal kalanTonaj;
-        private void ListViewListele()
-        {
-            listView1.View = View.Details;
-            listView1.GridLines = true;
-            listView1.FullRowSelect = true;
 
-            listView1.Columns.Clear();  // Önceki sütunları temizle
-            listView1.Columns.Add("Gemi Adı", 150);
-            listView1.Columns.Add("Limandan Çıkış Tarihi", 150);
-            listView1.Columns.Add("Limana Varış Tarihi", 150);
-            listView1.Columns.Add("Ürün Adı", 150);
-            listView1.Columns.Add("Firma Adı", 150);
-            listView1.Columns.Add("Urun Yükü", 100);
-            listView1.Columns.Add("Kalan Tonaj", 150);
+        private void btnTarihFiltrele_Click(object sender, EventArgs e)
+        {
+            ListViewFiltrele();
+        }
+        
+        private void ListViewFiltrele()
+        {
+            List<Gonderim> filtrelenmisGonderimler = gonderimler.ToList();
+
+
+            if (cbGemiSec.SelectedIndex != -1 && cbGemiSec.SelectedItem.ToString() != "Tümü") 
+            {
+                string secilenGemiAdi = cbGemiSec.SelectedItem.ToString();
+                filtrelenmisGonderimler = filtrelenmisGonderimler.Where(g => g.SeyirKayitları.Gemi.GemiAdi == secilenGemiAdi)
+                    .ToList();
+            }
+
+            if (cbFirmaSec.SelectedIndex != -1 && cbFirmaSec.SelectedItem.ToString() != "Tümü")
+            {
+                string secilenFirmaAdi = cbFirmaSec.SelectedItem.ToString();
+                filtrelenmisGonderimler = filtrelenmisGonderimler.Where(a => a.IlgilenenKisiler.BagliOlduguFirma.FirmaAdi == secilenFirmaAdi)
+                    .ToList();
+            }
+
+            if (dtpBaslangicTarihi.Value <= dtpBitisTarihi.Value)
+            {
+                DateTime baslangicTarihi = dtpBaslangicTarihi.Value;
+                DateTime bitisTarihi = dtpBitisTarihi.Value;
+                filtrelenmisGonderimler = filtrelenmisGonderimler
+                    .Where(g => g.SeyirKayitları.LimandanCikisTarihi >= baslangicTarihi && g.SeyirKayitları.LimanaVarisTarihi <= bitisTarihi)
+                    .ToList();
+            }
+            else
+            {
+                MessageBox.Show("Tarihleri mantıklı giriniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            ListViewDoldur(filtrelenmisGonderimler);
+        }
+
+
+
+        private void ComboxGemileriDoldur()
+        {
+            List<string> gemiAdlari = gonderimler.Select(g => g.SeyirKayitları.Gemi.GemiAdi).Distinct().ToList(); //distinct -> tekrar etmemesi için
+            cbGemiSec.Items.Add("Tümü");
+            cbGemiSec.Items.AddRange(gemiAdlari.ToArray());
+            cbGemiSec.SelectedIndex = 0;
+        }
+        private void ComboboxFirmalariDoldur()
+        {
+            List<string> firmaAdlari = gonderimler.Select(x => x.IlgilenenKisiler.BagliOlduguFirma.FirmaAdi).Distinct().ToList();
+            cbFirmaSec.Items.Add("Tümü");
+            cbFirmaSec.Items.AddRange(firmaAdlari.ToArray());
+            cbFirmaSec.SelectedIndex = 0;   
+        }
+
+        private void ListViewDoldur(List<Gonderim> gonderimler)
+        {
 
             listView1.Items.Clear();
 
-            //Gemi tonajını ve toplam kullanılan tonajı saklamak için değişkenler
-            //decimal gemiTonaji = 0;
-            //decimal toplamKullanilanTonaj = 0;
 
-            //foreach (Gonderim gonderim in gonderims)
-            //{
-            //    if (gemiTonaji == 0 && gonderim.SeyirKayitları.Gemi != null)
-            //    {
-            //        gemiTonaji = gonderim.SeyirKayitları.Gemi.Tonaji;
-            //    }
+            foreach (Gonderim gonderim in gonderimler)
+            {
 
-            //    toplamKullanilanTonaj += gonderim.Tonaj;
-            //    kalanTonaj = gemiTonaji - toplamKullanilanTonaj;
-                // Her gemi için kalan tonajı tutmak için bir sözlük (Dictionary)
-                Dictionary<string, decimal> gemiKalanTonaj = new Dictionary<string, decimal>();
-
-                foreach (Gonderim gonderim in gonderims)
-                {
-                    if (gonderim.SeyirKayitları.Gemi == null)
-                        continue; // Gemi bilgisi olmayan gönderimleri atla
-
-                    string gemiAdi = gonderim.SeyirKayitları.Gemi.GemiAdi;
-                    decimal gemiTonaji = gonderim.SeyirKayitları.Gemi.Tonaji;
-
-                    if (!gemiKalanTonaj.ContainsKey(gemiAdi))
-                    {
-                        gemiKalanTonaj[gemiAdi] = gemiTonaji; // Gemi için başlangıç tonajını ayarla
-                    }
-
-                    decimal kalanTonaj = gemiKalanTonaj[gemiAdi] - gonderim.Tonaj;
-                    gemiKalanTonaj[gemiAdi] = kalanTonaj; // Gemi için kalan tonajı güncelle
+                ListViewItem item = new ListViewItem(); // her bir satır
 
 
-                    ListViewItem item = new ListViewItem();
-                item.Text = gonderim.SeyirKayitları.Gemi != null ? gonderim.SeyirKayitları.Gemi.GemiAdi : "Belirtilmemiş";
-                item.SubItems.Add(gonderim.SeyirKayitları.LimandanCikisTarihi.ToString("dd/MM/yyyy"));
-                item.SubItems.Add(gonderim.SeyirKayitları.LimanaVarisTarihi.ToString("dd/MM/yyyy"));
-                item.SubItems.Add(gonderim.Urunler.UrunAdi);
-                item.SubItems.Add(gonderim.IlgilenenKisiler.BagliOlduguFirma != null ? gonderim.IlgilenenKisiler.BagliOlduguFirma.FirmaAdi : "Belirtilmemiş");
-                item.SubItems.Add(gonderim.Tonaj.ToString());
+                item.Text = gonderim.SeyirKayitları.Gemi.GemiAdi;
 
-                if (kalanTonaj >= 0)
-                {
-                    item.SubItems.Add(kalanTonaj.ToString());
-                }
-                else
-                {
-                    item.SubItems.Add("Gemi tonajından fazla");
-                }
+                item.SubItems.Add(gonderim.SeyirKayitları.LimandanCikisTarihi.ToString("dd.MM.yyyy"));
+                item.SubItems.Add(gonderim.SeyirKayitları.LimanaVarisTarihi.ToString("dd.MM.yyyy"));
+
+                item.SubItems.Add(gonderim.IlgilenenKisiler.KisininAdi);
+                item.SubItems.Add(gonderim.IlgilenenKisiler.BagliOlduguFirma.FirmaAdi);
+                item.SubItems.Add(gonderim.Urunler.UrunAdi);    
+
 
                 listView1.Items.Add(item);
             }
 
-            if (listView1.Items.Count > 0)
-            {
-                listView1.Items[0].Selected = true;
-            }
+            lblSeferSayisi.Text = $"Sefer Sayısı: {gonderimler.Count}";
         }
+
     }
-
-
-
-
-    
 }
+
+
+
+
+
+
