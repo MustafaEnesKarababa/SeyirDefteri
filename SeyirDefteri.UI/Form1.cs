@@ -27,6 +27,7 @@ namespace SeyirDefteri.UI
         {
             GemileriOlustur();
             LimanOlustur();
+            this.Text = "Sefer";
         }
 
         private void LimanOlustur()
