@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SeyirDefteri.UI
 {
@@ -34,12 +35,12 @@ namespace SeyirDefteri.UI
 
                 cmbSeferler.Items.Add(seyirKaydi);
             }
-
         }
-
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            this.Text = "Gemi Sefer Kayıt Ekranı";
+            
             FirmaEkle();
         }
 
@@ -138,48 +139,87 @@ namespace SeyirDefteri.UI
                 MessageBox.Show("Ürün adı boş olamaz.");
                 return;
             }
-        
+            if (KelimeKontroluYap(txtIlgilenenKisi.Text) || txtIlgilenenKisi.Text.Length < 6)
+            {
+                MessageBox.Show("İlgilenilen kişi adı alanına uygun bir isim soyisim giriniz.");
+                return;
+            }
+            if (KelimeKontroluYap(txtUrun.Text) || txtUrun.Text.Length < 2)
+            {
+                MessageBox.Show("Ürün adı alanına uygun bir ürün adı giriniz.");
+                return;
+            }
             // Seçili öğeyi doğrudan alın
             SeyirKaydi selectedSeyirKaydi = cmbSeferler.SelectedItem as SeyirKaydi;
-
 
             if (selectedSeyirKaydi == null || selectedSeyirKaydi.Gemi == null)
             {
                 MessageBox.Show("Geçerli bir sefer seçilmedi veya gemi bilgisi eksik.");
                 return;
             }
+            if (nmdTonaj.Value <= 0)
+            {
+                MessageBox.Show("Ürün tonajı sıfıra eşit veya küçük olamaz.");
+                return;
+            }
+
             selectedGemi = selectedSeyirKaydi.Gemi;
             // Gemi tonajını kontrol et
-            if (nmdTonaj.Value < 0 || selectedGemi.Tonaji < nmdTonaj.Value)
+            if (selectedGemi.Tonaji < nmdTonaj.Value)
             {
                 MessageBox.Show("Geminin tonajından büyük bir değer girilemez.");
                 return;
             }
-
             if (String.IsNullOrWhiteSpace(txtIlgilenenKisi.Text))
             {
                 MessageBox.Show("İlgilenen Kişinin adı boş olamaz.");
                 return;
             }
-            if (String.IsNullOrWhiteSpace(mtxtIlgilenenKisiTelefon.Text))
+            if (!HarfKontroluYap(txtIlgilenenKisi.Text))
             {
-                MessageBox.Show("İlgilenen Kişinin Telefon Numarası boş olamaz.");
+                MessageBox.Show("İlgilenen kişi adı girerken sadece harf giriniz.");
                 return;
             }
+            if (mtxtIlgilenenKisiTelefon.Text.Count() < 14)
+            {
+                MessageBox.Show("İlgilenen Kişinin Telefon Numarası eksiksiz girilmeli.");
+                return;
+            }
+
+
+            decimal mevcutYuk = 0;
+            foreach (ListViewItem item in lstVGonderim.Items)
+            {
+                if (item.SubItems[1].Text == selectedGemi.GemiAdi)
+                {
+                    mevcutYuk += decimal.Parse(item.SubItems[2].Text);
+                }
+            }
+
+            mevcutYuk += (decimal)nmdTonaj.Value;
+
+            if (mevcutYuk > selectedGemi.Tonaji)
+            {
+                MessageBox.Show("Geminin tonajını aşacak şekilde yükleme yapılamaz!", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
             gonderim.SeyirKayitları = (SeyirKaydi)cmbSeferler.SelectedItem; //Sefer kayıtlarını al 
             gonderim.Urunler = new Urun();
             gonderim.Tonaj = nmdTonaj.Value;
-            gonderim.Urunler.UrunAdi = txtUrun.Text;
+            gonderim.Urunler.UrunAdi = txtUrun.Text.Trim();
             gonderim.Urunler.UrunId = urunId++;
 
             gonderim.IlgilenenKisiler = new IlgilenenKisi();
-            gonderim.IlgilenenKisiler.KisininAdi = txtIlgilenenKisi.Text;
+            gonderim.IlgilenenKisiler.KisininAdi = txtIlgilenenKisi.Text.Trim();
             gonderim.IlgilenenKisiler.KisininTelefonu = mtxtIlgilenenKisiTelefon.Text;
             gonderim.IlgilenenKisiler.IlgilenenKisiId = ilgilenKisiId++;
             gonderim.IlgilenenKisiler.BagliOlduguFirma = (Firma)cmnFirma.SelectedItem;
 
             ListViewItem lstGonderim = new ListViewItem();
             lstGonderim.Text = (++id).ToString();
+            lstGonderim.SubItems.Add(gonderim.SeyirKayitları.Gemi.GemiAdi);
             lstGonderim.SubItems.Add(gonderim.Tonaj.ToString());
             lstGonderim.SubItems.Add(gonderim.Urunler.UrunAdi);
             lstGonderim.SubItems.Add(gonderim.IlgilenenKisiler.BagliOlduguFirma != null ? gonderim.IlgilenenKisiler.BagliOlduguFirma.FirmaAdi : string.Empty); //firma var mı yok mu kontrol et
@@ -198,9 +238,27 @@ namespace SeyirDefteri.UI
             txtIlgilenenKisi.Text = string.Empty;
             mtxtIlgilenenKisiTelefon.Text = string.Empty;
             nmdTonaj.Value = 0;
+            pbGemiler.Image = null;
         }
 
-        private void btnZRaporu_Click(object sender, EventArgs e)
+        private bool HarfKontroluYap(string metin) 
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(metin, @"^[a-zA-ZĞÜŞİÖÇığüşöç\s]+$") ? true : false;
+        }
+
+        private bool KelimeKontroluYap(string kelime) 
+        {
+            bool uygunMu = true;
+            List<string> yasakliKelimeler = new List<string>() { "asd", "asdd", "dddd" };
+            foreach (string item in yasakliKelimeler)
+            {
+                
+                uygunMu = kelime.Contains(item) ? true : false;
+            }
+            return uygunMu;
+        }
+
+    private void btnZRaporu_Click(object sender, EventArgs e)
         {
             if (lstVGonderim.Items.Count > 0)
             {
@@ -218,5 +276,13 @@ namespace SeyirDefteri.UI
             }
         }
 
+        private void cmbSeferler_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SeyirKaydi selectedSeyirKaydi = cmbSeferler.SelectedItem as SeyirKaydi;
+            if (selectedSeyirKaydi != null) 
+            {
+                pbGemiler.Image = Image.FromFile(selectedSeyirKaydi.Gemi.FotografYolu);
+            }
+        }
     }
 }

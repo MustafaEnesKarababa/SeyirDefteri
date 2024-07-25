@@ -17,7 +17,7 @@ namespace SeyirDefteri.Core
         public string CikisLimani { get; set; }
         public override string ToString()
         {
-            return Gemi.GemiAdi.ToString()+" "+LimanaVarisTarihi.Date.ToString("d")+" "+LimandanCikisTarihi.Date.ToString("d");//+"  "+ LimandanCikisTarihi.Date.ToString("d")+ " "+LimanaVarisTarihi.Date.ToString("d ");//Tostring içerisinde "d" ibaresi saat saniye vb şeyleri almamak için yazılmıştır
+            return Gemi.GemiAdi.ToString()+ " - " +LimanaVarisTarihi.Date.ToString("d")+" -  "+LimandanCikisTarihi.Date.ToString("d");//+"  "+ LimandanCikisTarihi.Date.ToString("d")+ " "+LimanaVarisTarihi.Date.ToString("d ");//Tostring içerisinde "d" ibaresi saat saniye vb şeyleri almamak için yazılmıştır
         }
     }
 }

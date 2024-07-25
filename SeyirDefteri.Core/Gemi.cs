@@ -11,6 +11,7 @@ namespace SeyirDefteri.Core
         public int GemiId { get; set; }
         public string GemiAdi { get; set; }
         public decimal Tonaji { get; set; }
+        public string FotografYolu { get; set; }
 
         public override string ToString() 
         {

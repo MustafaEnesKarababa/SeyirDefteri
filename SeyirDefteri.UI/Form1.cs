@@ -81,21 +81,21 @@ namespace SeyirDefteri.UI
         {
             List<Gemi> gemiler = new List<Gemi>
     {
-        new Gemi { GemiId = 1, GemiAdi = "Titanic", Tonaji = 46000m },
-        new Gemi { GemiId = 2, GemiAdi = "Queen Mary 2", Tonaji = 148528m },
-        new Gemi { GemiId = 3, GemiAdi = "Oasis of the Seas", Tonaji = 226838m },
-        new Gemi { GemiId = 4, GemiAdi = "Harmony of the Seas", Tonaji = 226963m },
-        new Gemi { GemiId = 5, GemiAdi = "Symphony of the Seas", Tonaji = 228081m },
-        new Gemi { GemiId = 6, GemiAdi = "MSC Meraviglia", Tonaji = 171598m },
-        new Gemi { GemiId = 7, GemiAdi = "Norwegian Escape", Tonaji = 165300m },
-        new Gemi { GemiId = 8, GemiAdi = "Costa Smeralda", Tonaji = 185010m },
-        new Gemi { GemiId = 9, GemiAdi = "AIDAnova", Tonaji = 183900m },
-        new Gemi { GemiId = 10, GemiAdi = "Mardi Gras", Tonaji = 180000m },
-        new Gemi { GemiId = 11, GemiAdi = "Regal Princess", Tonaji = 142714m },
-        new Gemi { GemiId = 12, GemiAdi = "Majestic Princess", Tonaji = 143700m },
-        new Gemi { GemiId = 13, GemiAdi = "Celebrity Edge", Tonaji = 130818m },
-        new Gemi { GemiId = 14, GemiAdi = "MSC Seaview", Tonaji = 154000m },
-        new Gemi { GemiId = 15, GemiAdi = "Carnival Vista", Tonaji = 133500m }
+        new Gemi { GemiId = 1, GemiAdi = "Titanic", Tonaji = 46000m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\1.jpg" },
+        new Gemi { GemiId = 2, GemiAdi = "Queen Mary 2", Tonaji = 148528m , FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\2.jpg" },
+        new Gemi { GemiId = 3, GemiAdi = "Oasis of the Seas", Tonaji = 226838m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\3.jpg" },
+        new Gemi { GemiId = 4, GemiAdi = "Harmony of the Seas", Tonaji = 226963m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\4.jpg" },
+        new Gemi { GemiId = 5, GemiAdi = "Symphony of the Seas", Tonaji = 228081m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\5.jpg" },
+        new Gemi { GemiId = 6, GemiAdi = "MSC Meraviglia", Tonaji = 171598m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\6.png" },
+        new Gemi { GemiId = 7, GemiAdi = "Norwegian Escape", Tonaji = 165300m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\7.jpg" },
+        new Gemi { GemiId = 8, GemiAdi = "Costa Smeralda", Tonaji = 185010m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\8.jpg" },
+        new Gemi { GemiId = 9, GemiAdi = "AIDAnova", Tonaji = 183900m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\9.jpg" },
+        new Gemi { GemiId = 10, GemiAdi = "Mardi Gras", Tonaji = 180000m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\10.jpg" },
+        new Gemi { GemiId = 11, GemiAdi = "Regal Princess", Tonaji = 142714m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\11.jpg" },
+        new Gemi { GemiId = 12, GemiAdi = "Majestic Princess", Tonaji = 143700m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\12.jpg" },
+        new Gemi { GemiId = 13, GemiAdi = "Celebrity Edge", Tonaji = 130818m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\13.jpg" },
+        new Gemi { GemiId = 14, GemiAdi = "MSC Seaview", Tonaji = 154000m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\14.jpg" },
+        new Gemi { GemiId = 15, GemiAdi = "Carnival Vista", Tonaji = 133500m, FotografYolu = @"C:\Users\UmutOncel91\Desktop\Seyir Defteri\SeyirDefteri.UI\GemiFotograflari\15.jpg" }
     };
 
             foreach (var gemi in gemiler)
