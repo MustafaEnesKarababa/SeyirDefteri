@@ -247,7 +247,7 @@
 			this.btnGec.Name = "btnGec";
 			this.btnGec.Size = new System.Drawing.Size(558, 30);
 			this.btnGec.TabIndex = 14;
-			this.btnGec.Text = ">>>>>>>>>>";
+			this.btnGec.Text = "Seyir Detayları";
 			this.btnGec.UseVisualStyleBackColor = false;
 			this.btnGec.Click += new System.EventHandler(this.btnGec_Click);
 			// 
@@ -266,7 +266,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-			this.ClientSize = new System.Drawing.Size(638, 573);
+			this.ClientSize = new System.Drawing.Size(634, 573);
 			this.Controls.Add(this.label7);
 			this.Controls.Add(this.btnGec);
 			this.Controls.Add(this.btnEkle);
