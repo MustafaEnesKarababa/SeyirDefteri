@@ -117,7 +117,7 @@ namespace SeyirDefteri.UI
             }
         }
 
-        //gemilerin seferde olduğu zaman listeden çıakrılsın
+        //gemilerin seferde olduğu zaman listeden çıkarılsın
         int id = 0;
         private void btnEkle_Click(object sender, EventArgs e)
         {
