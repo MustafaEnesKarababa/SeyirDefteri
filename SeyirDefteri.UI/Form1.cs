@@ -18,7 +18,19 @@ namespace SeyirDefteri.UI
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+		private void InitializeDateTimePickers()
+		{
+			// DateTimePicker kontrolünün formatını ayarlama
+			dtpLimanCikisTarihi.Format = DateTimePickerFormat.Custom;
+			dtpLimanCikisTarihi.CustomFormat = "dd/MM/yyyy HH:mm"; // Gün/Ay/Yıl Saat:Dakika formatı
+			dtpLimanCikisTarihi.ShowUpDown = true;
+
+			dtpLimanVarisTarihi.Format = DateTimePickerFormat.Custom;
+			dtpLimanVarisTarihi.CustomFormat = "dd/MM/yyyy HH:mm"; // Gün/Ay/Yıl Saat:Dakika formatı
+			dtpLimanVarisTarihi.ShowUpDown = true;
+		}
+
+		private void label2_Click(object sender, EventArgs e)
         {
 
         }
@@ -28,7 +40,8 @@ namespace SeyirDefteri.UI
             GemileriOlustur();
             LimanOlustur();
             this.Text = "Sefer";
-        }
+			
+		}
 
         private void LimanOlustur()
         {
@@ -113,6 +126,11 @@ namespace SeyirDefteri.UI
                 MessageBox.Show("Varış Tarihi Çıkış Küçük olamaz");
                 return;
             }
+            if (dtpLimanCikisTarihi.Value < DateTime.Now && dtpLimanVarisTarihi.Value < DateTime.Now)
+			{
+                MessageBox.Show("Sefer girişleri günümüz ve sonraki tarihlerde yapılabilir, bu sebeple geçmiş tarihlerde giriş yapamazsınız");
+                return;
+            }
             if (cmbGemi.SelectedItem == null)
             {
                 MessageBox.Show("Gemi girilmesi zorunludur");
@@ -132,16 +150,17 @@ namespace SeyirDefteri.UI
             SeyirKaydi seyirDefteri = new SeyirKaydi();
 
             seyirDefteri.LimandanCikisTarihi = dtpLimanCikisTarihi.Value;
-            seyirDefteri.LimanaVarisTarihi = dtpLimanVarisTarihi.Value;
-            seyirDefteri.CikisLimani = cmnCikisLimani.SelectedItem.ToString();
+			seyirDefteri.CikisLimani = cmnCikisLimani.SelectedItem.ToString();
+			seyirDefteri.LimanaVarisTarihi = dtpLimanVarisTarihi.Value;            
             seyirDefteri.UgrayacagiLiman = cmnUgradigiLimani.SelectedItem.ToString();
             seyirDefteri.VarisLimani = cmnVarisLimani.SelectedItem.ToString();
             seyirDefteri.Gemi = (Gemi)cmbGemi.SelectedItem;
 
             ListViewItem lstSyeriDefteri = new ListViewItem();
             lstSyeriDefteri.Text = (++id).ToString();
-            lstSyeriDefteri.SubItems.Add(seyirDefteri.LimanaVarisTarihi.ToString());
-            lstSyeriDefteri.SubItems.Add(seyirDefteri.LimandanCikisTarihi.ToString());
+			lstSyeriDefteri.SubItems.Add(seyirDefteri.LimandanCikisTarihi.ToString());
+			lstSyeriDefteri.SubItems.Add(seyirDefteri.LimanaVarisTarihi.ToString());
+            
 
             lstSyeriDefteri.SubItems.Add(seyirDefteri.CikisLimani.ToString());
             lstSyeriDefteri.SubItems.Add(seyirDefteri.UgrayacagiLiman.ToString());
@@ -183,5 +202,7 @@ namespace SeyirDefteri.UI
                 MessageBox.Show("Lütfen Seyirlerinizi Listeye Ekleyiniz");
             }
         }
-    }
+
+		
+	}
 }
