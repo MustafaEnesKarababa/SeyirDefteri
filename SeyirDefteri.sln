@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeyirDefteri.UI", "SeyirDefteri.UI\SeyirDefteri.UI.csproj", "{52FC1C3D-AD38-437C-BF2F-1EDB70EF191D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeyirDefteri.Core", "SeyirDefteri.Core\SeyirDefteri.Core.csproj", "{1CBF6A10-0961-454F-9B2F-E73337AEEC22}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52FC1C3D-AD38-437C-BF2F-1EDB70EF191D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52FC1C3D-AD38-437C-BF2F-1EDB70EF191D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52FC1C3D-AD38-437C-BF2F-1EDB70EF191D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52FC1C3D-AD38-437C-BF2F-1EDB70EF191D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CBF6A10-0961-454F-9B2F-E73337AEEC22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CBF6A10-0961-454F-9B2F-E73337AEEC22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CBF6A10-0961-454F-9B2F-E73337AEEC22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CBF6A10-0961-454F-9B2F-E73337AEEC22}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {11CCCCFF-1EB4-4D31-ACC2-8657CD940F5B}
+	EndGlobalSection
+EndGlobal
