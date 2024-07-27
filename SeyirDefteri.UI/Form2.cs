@@ -14,25 +14,24 @@ namespace SeyirDefteri.UI
 {
     public partial class Form2 : Form
     {
-        private List<SeyirKaydi> seyirKaydis;
+        private List<SeyirKaydi> _seyirKayitlari;
 
         public Form2()
         {
             InitializeComponent();
         }
 
-        public Form2(List<SeyirKaydi> seyirKaydis) : this()
+        public Form2(List<SeyirKaydi> seyirKayitlari) : this()
         {
-            this.seyirKaydis = seyirKaydis;
+            _seyirKayitlari = seyirKayitlari;
 
-            foreach (SeyirKaydi seyirKaydi in seyirKaydis)
+            foreach (SeyirKaydi seyirKaydi in seyirKayitlari)
             {
                 if (seyirKaydi.Gemi == null)
                 {
                     MessageBox.Show("Sefer kayıtlarındaki gemi bilgisi eksik.");
                     return;
                 }
-
                 cmbSeferler.Items.Add(seyirKaydi);
             }
         }
@@ -40,65 +39,65 @@ namespace SeyirDefteri.UI
         private void Form2_Load(object sender, EventArgs e)
         {
             this.Text = "Gemi Sefer Kayıt Ekranı";
-            
+
             FirmaEkle();
         }
 
         private void FirmaEkle()
         {
             List<Firma> firmalar = new List<Firma>
-    {
-        new Firma { FirmaId = 1, FirmaAdi = "Bilge Adam" },
-        new Firma { FirmaId = 2, FirmaAdi = "Koç Holding" },
-        new Firma { FirmaId = 3, FirmaAdi = "Vestel" },
-        new Firma { FirmaId = 4, FirmaAdi = "Togg" },
-        new Firma { FirmaId = 5, FirmaAdi = "Tesla" },
-        new Firma { FirmaId = 6, FirmaAdi = "Arçelik" },
-        new Firma { FirmaId = 7, FirmaAdi = "Ford Otosan" },
-        new Firma { FirmaId = 8, FirmaAdi = "Turkcell" },
-        new Firma { FirmaId = 9, FirmaAdi = "Vodafone" },
-        new Firma { FirmaId = 10, FirmaAdi = "Türk Telekom" },
-        new Firma { FirmaId = 11, FirmaAdi = "Garanti Bankası" },
-        new Firma { FirmaId = 12, FirmaAdi = "Akbank" },
-        new Firma { FirmaId = 13, FirmaAdi = "İş Bankası" },
-        new Firma { FirmaId = 14, FirmaAdi = "Yapı Kredi" },
-        new Firma { FirmaId = 15, FirmaAdi = "Halkbank" },
-        new Firma { FirmaId = 16, FirmaAdi = "Ziraat Bankası" },
-        new Firma { FirmaId = 17, FirmaAdi = "Bim" },
-        new Firma { FirmaId = 18, FirmaAdi = "Migros" },
-        new Firma { FirmaId = 19, FirmaAdi = "CarrefourSA" },
-        new Firma { FirmaId = 20, FirmaAdi = "A101" },
-        new Firma { FirmaId = 21, FirmaAdi = "Şok Marketler" },
-        new Firma { FirmaId = 22, FirmaAdi = "LC Waikiki" },
-        new Firma { FirmaId = 23, FirmaAdi = "Defacto" },
-        new Firma { FirmaId = 24, FirmaAdi = "Boyner" },
-        new Firma { FirmaId = 25, FirmaAdi = "Mavi" },
-        new Firma { FirmaId = 26, FirmaAdi = "Koton" },
-        new Firma { FirmaId = 27, FirmaAdi = "Vakko" },
-        new Firma { FirmaId = 28, FirmaAdi = "Colins" },
-        new Firma { FirmaId = 29, FirmaAdi = "Altınyıldız" },
-        new Firma { FirmaId = 30, FirmaAdi = "Nike" },
-        new Firma { FirmaId = 31, FirmaAdi = "Adidas" },
-        new Firma { FirmaId = 32, FirmaAdi = "Puma" },
-        new Firma { FirmaId = 33, FirmaAdi = "Reebok" },
-        new Firma { FirmaId = 34, FirmaAdi = "Under Armour" },
-        new Firma { FirmaId = 35, FirmaAdi = "Decathlon" },
-        new Firma { FirmaId = 36, FirmaAdi = "H&M" },
-        new Firma { FirmaId = 37, FirmaAdi = "Zara" },
-        new Firma { FirmaId = 38, FirmaAdi = "Pull&Bear" },
-        new Firma { FirmaId = 39, FirmaAdi = "Massimo Dutti" },
-        new Firma { FirmaId = 40, FirmaAdi = "Bershka" },
-        new Firma { FirmaId = 41, FirmaAdi = "Stradivarius" },
-        new Firma { FirmaId = 42, FirmaAdi = "Oysho" },
-        new Firma { FirmaId = 43, FirmaAdi = "Mango" },
-        new Firma { FirmaId = 44, FirmaAdi = "İpekyol" },
-        new Firma { FirmaId = 45, FirmaAdi = "Derimod" },
-        new Firma { FirmaId = 46, FirmaAdi = "Kemal Tanca" },
-        new Firma { FirmaId = 47, FirmaAdi = "Greyder" },
-        new Firma { FirmaId = 48, FirmaAdi = "FLO" },
-        new Firma { FirmaId = 49, FirmaAdi = "Hotiç" },
-        new Firma { FirmaId = 50, FirmaAdi = "Vakko" }
-    };
+            {
+                new Firma { FirmaId = 1, FirmaAdi = "Bilge Adam" },
+                new Firma { FirmaId = 2, FirmaAdi = "Koç Holding" },
+                new Firma { FirmaId = 3, FirmaAdi = "Vestel" },
+                new Firma { FirmaId = 4, FirmaAdi = "Togg" },
+                new Firma { FirmaId = 5, FirmaAdi = "Tesla" },
+                new Firma { FirmaId = 6, FirmaAdi = "Arçelik" },
+                new Firma { FirmaId = 7, FirmaAdi = "Ford Otosan" },
+                new Firma { FirmaId = 8, FirmaAdi = "Turkcell" },
+                new Firma { FirmaId = 9, FirmaAdi = "Vodafone" },
+                new Firma { FirmaId = 10, FirmaAdi = "Türk Telekom" },
+                new Firma { FirmaId = 11, FirmaAdi = "Garanti Bankası" },
+                new Firma { FirmaId = 12, FirmaAdi = "Akbank" },
+                new Firma { FirmaId = 13, FirmaAdi = "İş Bankası" },
+                new Firma { FirmaId = 14, FirmaAdi = "Yapı Kredi" },
+                new Firma { FirmaId = 15, FirmaAdi = "Halkbank" },
+                new Firma { FirmaId = 16, FirmaAdi = "Ziraat Bankası" },
+                new Firma { FirmaId = 17, FirmaAdi = "Bim" },
+                new Firma { FirmaId = 18, FirmaAdi = "Migros" },
+                new Firma { FirmaId = 19, FirmaAdi = "CarrefourSA" },
+                new Firma { FirmaId = 20, FirmaAdi = "A101" },
+                new Firma { FirmaId = 21, FirmaAdi = "Şok Marketler" },
+                new Firma { FirmaId = 22, FirmaAdi = "LC Waikiki" },
+                new Firma { FirmaId = 23, FirmaAdi = "Defacto" },
+                new Firma { FirmaId = 24, FirmaAdi = "Boyner" },
+                new Firma { FirmaId = 25, FirmaAdi = "Mavi" },
+                new Firma { FirmaId = 26, FirmaAdi = "Koton" },
+                new Firma { FirmaId = 27, FirmaAdi = "Vakko" },
+                new Firma { FirmaId = 28, FirmaAdi = "Colins" },
+                new Firma { FirmaId = 29, FirmaAdi = "Altınyıldız" },
+                new Firma { FirmaId = 30, FirmaAdi = "Nike" },
+                new Firma { FirmaId = 31, FirmaAdi = "Adidas" },
+                new Firma { FirmaId = 32, FirmaAdi = "Puma" },
+                new Firma { FirmaId = 33, FirmaAdi = "Reebok" },
+                new Firma { FirmaId = 34, FirmaAdi = "Under Armour" },
+                new Firma { FirmaId = 35, FirmaAdi = "Decathlon" },
+                new Firma { FirmaId = 36, FirmaAdi = "H&M" },
+                new Firma { FirmaId = 37, FirmaAdi = "Zara" },
+                new Firma { FirmaId = 38, FirmaAdi = "Pull&Bear" },
+                new Firma { FirmaId = 39, FirmaAdi = "Massimo Dutti" },
+                new Firma { FirmaId = 40, FirmaAdi = "Bershka" },
+                new Firma { FirmaId = 41, FirmaAdi = "Stradivarius" },
+                new Firma { FirmaId = 42, FirmaAdi = "Oysho" },
+                new Firma { FirmaId = 43, FirmaAdi = "Mango" },
+                new Firma { FirmaId = 44, FirmaAdi = "İpekyol" },
+                new Firma { FirmaId = 45, FirmaAdi = "Derimod" },
+                new Firma { FirmaId = 46, FirmaAdi = "Kemal Tanca" },
+                new Firma { FirmaId = 47, FirmaAdi = "Greyder" },
+                new Firma { FirmaId = 48, FirmaAdi = "FLO" },
+                new Firma { FirmaId = 49, FirmaAdi = "Hotiç" },
+                new Firma { FirmaId = 50, FirmaAdi = "Vakko" }
+            };
 
             foreach (var firma in firmalar)
             {
@@ -109,7 +108,7 @@ namespace SeyirDefteri.UI
         int urunId = 1;
         int ilgilenKisiId = 1;
         int id = 0;
-        private Gemi selectedGemi;
+        private Gemi seciliGemi;
         /// <summary>
         /// Başlangıçta validasyonlar eklendi 
         /// 1- Gelen Seferler Boş mu değil mi
@@ -150,9 +149,9 @@ namespace SeyirDefteri.UI
                 return;
             }
             // Seçili öğeyi doğrudan alın
-            SeyirKaydi selectedSeyirKaydi = cmbSeferler.SelectedItem as SeyirKaydi;
+            SeyirKaydi seciliSeyirKaydi = cmbSeferler.SelectedItem as SeyirKaydi;
 
-            if (selectedSeyirKaydi == null || selectedSeyirKaydi.Gemi == null)
+            if (seciliSeyirKaydi == null || seciliSeyirKaydi.Gemi == null)
             {
                 MessageBox.Show("Geçerli bir sefer seçilmedi veya gemi bilgisi eksik.");
                 return;
@@ -163,9 +162,9 @@ namespace SeyirDefteri.UI
                 return;
             }
 
-            selectedGemi = selectedSeyirKaydi.Gemi;
+            seciliGemi = seciliSeyirKaydi.Gemi;
             // Gemi tonajını kontrol et
-            if (selectedGemi.Tonaji < nmdTonaj.Value)
+            if (seciliGemi.Tonaji < nmdTonaj.Value)
             {
                 MessageBox.Show("Geminin tonajından büyük bir değer girilemez.");
                 return;
@@ -186,24 +185,21 @@ namespace SeyirDefteri.UI
                 return;
             }
 
-
             decimal mevcutYuk = 0;
             foreach (ListViewItem item in lstVGonderim.Items)
             {
-                if (item.SubItems[1].Text == selectedGemi.GemiAdi)
+                if (item.SubItems[1].Text == seciliGemi.GemiAdi)
                 {
                     mevcutYuk += decimal.Parse(item.SubItems[2].Text);
                 }
             }
 
             mevcutYuk += (decimal)nmdTonaj.Value;
-
-            if (mevcutYuk > selectedGemi.Tonaji)
+            if (mevcutYuk > seciliGemi.Tonaji)
             {
                 MessageBox.Show("Geminin tonajını aşacak şekilde yükleme yapılamaz!", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
 
             gonderim.SeyirKayitları = (SeyirKaydi)cmbSeferler.SelectedItem; //Sefer kayıtlarını al 
             gonderim.Urunler = new Urun();
@@ -222,11 +218,14 @@ namespace SeyirDefteri.UI
             lstGonderim.SubItems.Add(gonderim.SeyirKayitları.Gemi.GemiAdi);
             lstGonderim.SubItems.Add(gonderim.Tonaj.ToString());
             lstGonderim.SubItems.Add(gonderim.Urunler.UrunAdi);
-            lstGonderim.SubItems.Add(gonderim.IlgilenenKisiler.BagliOlduguFirma != null ? gonderim.IlgilenenKisiler.BagliOlduguFirma.FirmaAdi : string.Empty); //firma var mı yok mu kontrol et
+            lstGonderim.SubItems.Add(gonderim.IlgilenenKisiler.BagliOlduguFirma != null 
+                ? gonderim.IlgilenenKisiler.BagliOlduguFirma.FirmaAdi 
+                : string.Empty); //firma var mı yok mu kontrol et
             lstGonderim.SubItems.Add(gonderim.IlgilenenKisiler.KisininAdi);
             lstGonderim.SubItems.Add(gonderim.IlgilenenKisiler.KisininTelefonu);
             lstGonderim.Tag = gonderim; // gonderim nesnesini Tag olarak ayarla
             lstVGonderim.Items.Add(lstGonderim);
+            
             Temizle();
         }
 
@@ -241,24 +240,23 @@ namespace SeyirDefteri.UI
             pbGemiler.Image = null;
         }
 
-        private bool HarfKontroluYap(string metin) 
+        private bool HarfKontroluYap(string metin)
         {
             return System.Text.RegularExpressions.Regex.IsMatch(metin, @"^[a-zA-ZĞÜŞİÖÇığüşöç\s]+$") ? true : false;
         }
 
-        private bool KelimeKontroluYap(string kelime) 
+        private bool KelimeKontroluYap(string kelime)
         {
             bool uygunMu = true;
             List<string> yasakliKelimeler = new List<string>() { "asd", "asdd", "dddd" };
             foreach (string item in yasakliKelimeler)
             {
-                
                 uygunMu = kelime.Contains(item) ? true : false;
             }
             return uygunMu;
         }
 
-    private void btnZRaporu_Click(object sender, EventArgs e)
+        private void btnZRaporu_Click(object sender, EventArgs e)
         {
             if (lstVGonderim.Items.Count > 0)
             {
@@ -278,12 +276,11 @@ namespace SeyirDefteri.UI
 
         private void cmbSeferler_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SeyirKaydi selectedSeyirKaydi = cmbSeferler.SelectedItem as SeyirKaydi;
-            if (selectedSeyirKaydi != null) 
+            SeyirKaydi seciliSeyirKaydi = cmbSeferler.SelectedItem as SeyirKaydi;
+            if (seciliSeyirKaydi != null)
             {
-                pbGemiler.Image = Image.FromFile(selectedSeyirKaydi.Gemi.FotografYolu);
+                pbGemiler.Image = Image.FromFile(seciliSeyirKaydi.Gemi.FotografYolu);
             }
         }
     }
-
 }
